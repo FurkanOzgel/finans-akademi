@@ -8,6 +8,7 @@
 
 import React from 'react';
 import type {Node} from 'react';
+import SplashScreen from "react-native-splash-screen";
 import {
   SafeAreaView,
   ScrollView,
@@ -56,6 +57,10 @@ const Section = ({children, title}): Node => {
 
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
+
+  React.useEffect(() => {
+        SplashScreen.hide(); //hides the splash screen on app load.
+      }, []);
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
