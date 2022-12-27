@@ -12,7 +12,7 @@ module.exports = async function () {
     })
 
     TrackPlayer.addEventListener(Event.RemotePause, () => {
-        getPrice("ODAS")
+        getPrice(["BIST:ODAS","BIST:THYAO","BIST:ASELS"])
         TrackPlayer.pause()
         BackgroundTimer.setTimeout(() => {
             TrackPlayer.play()

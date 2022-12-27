@@ -2,6 +2,12 @@ import notifee from "@notifee/react-native"
 
 export default async function priceNotification(data) {
 
+    var body = ""
+
+
+    for(i = 0; i < data.length; i++) {
+        body = body + `${data[i].symbol}:<br>${data[i].price}<br>${Math.round(data[i].percentage*100)/100}%<br><br>`
+        }
     const channelId = await notifee.createChannel({
         id: "Price Notification",
         name: "Price Notification",
@@ -9,7 +15,7 @@ export default async function priceNotification(data) {
     });
     await notifee.displayNotification({
         id: "price",
-        body:  `${data.symbol}:<br>${data.price}<br>${Math.round(data.percentage*100)/100}%`,
+        body:  body,
         android: {
             channelId,
             smallIcon: 'notification',
@@ -17,4 +23,5 @@ export default async function priceNotification(data) {
         },
         data:{ type: "price"}
     });
+    
 }
