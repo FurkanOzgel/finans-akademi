@@ -1,1 +1,1 @@
-export { default } from "./BandSwitch";
+export {default} from "./BandSwitch";

@@ -4,8 +4,9 @@ import { View, Text, ScrollView } from "react-native";
 
 export default function SettingsScreen() {
     return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <View>
             <ScrollView>
+                <Text style={{marginBottom:30, textAlign:"center"}}>Settings</Text>
                 <BandSwitch/>
             </ScrollView>
         </View>
