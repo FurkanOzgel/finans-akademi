@@ -33,4 +33,7 @@ export default async function setupPlayer() {
     })
     await TrackPlayer.setRepeatMode(RepeatMode.Track)
     await TrackPlayer.play()
+    await TrackPlayer.pause()
+    await TrackPlayer.play()
+
 }

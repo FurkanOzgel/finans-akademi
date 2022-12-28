@@ -16,11 +16,13 @@ export default function getPrice(symbol) {
 
                 chart.onUpdate( () => {
                     if (!chart.periods[0]) return;
+                    var price = chart.periods[0].close*100;
+                    price = parseInt(price)/100
                     const responseData = {
                         symbol: name,
                         description: chart.infos.description,
                         local_description: chart.infos.local_description,
-                        price: `${chart.periods[0].close} ${chart.infos.currency_id}`,
+                        price: `${price} ${chart.infos.currency_id}`,
                         percentage: Math.round(((chart.periods[0].close - chart.periods[1].close)*100/
                             chart.periods[1].close)*100)/100,
                         type: chart.infos.type,
