@@ -1,4 +1,9 @@
 {
+  "rnpm": {
+    "assets": [
+      "resources/fonts"
+    ]
+  },
   "name": "finans_akademi",
   "version": "0.0.1",
   "private": true,
@@ -17,6 +22,7 @@
     "@react-navigation/native-stack": "^6.9.7",
     "axios": "^1.2.1",
     "jszip": "^3.10.1",
+    "lottie-react-native": "^5.1.4",
     "notifee": "^0.0.1",
     "os": "^0.1.2",
     "react": "18.1.0",
