@@ -3,13 +3,10 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
     title:{
         marginTop:10,
-        marginBottom:15,
+        marginBottom:5,
         textAlign:"center",
-        fontSize:24,
+        fontSize:22,
         color:"black",
-    },
-    title_container: {
-        // borderBottomWidth:0.5,
-        // borderColor:"#C0C0C0" 
+        fontWeight:"bold"
     }
 })

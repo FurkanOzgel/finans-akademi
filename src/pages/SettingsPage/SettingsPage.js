@@ -4,10 +4,10 @@ import { View, Text, ScrollView } from "react-native";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import styles from "./SettingsPage.style";
 
-export default function SettingsScreen() {
+export default function SettingsScreen({navigation}) {
     return (
         <View>
-            <View style={styles.title_container}>
+            <View>
                 <Text style={styles.title}>Ayarlar</Text>
             </View>
             <ScrollView>
@@ -21,19 +21,25 @@ export default function SettingsScreen() {
                     type={"button"}
                     title={"Akıllı Bileklik İle Fiyat Verisi Al"}
                     Icon={() =>{ return(<Ionicons name = {"watch-outline"} size={25} color={"black"}/> )}}
-                    onPress = {() => null}
+                    onPress = {() => navigation.navigate("Akıllı Bileklik Ayarları")}
                 />
                 <SettingsCard 
                     type={"button"}
                     title={"Günlük Hatırlatıcı"}
                     Icon={() =>{ return(<Ionicons name = {"notifications-outline"} size={25} color={"black"}/> )}}
-                    onPress = {() => null}
+                    onPress = {() => navigation.navigate("Günlük Hatırlatıcı")}
+                />
+                <SettingsCard 
+                    type={"button"}
+                    title={"Dil"}
+                    Icon={() =>{ return(<Ionicons name = {"language-outline"} size={25} color={"black"}/> )}}
+                    onPress = {() => navigation.navigate("Dil")}
                 />
                 <SettingsCard 
                     type={"button"}
                     title={"Hakkında"}
                     Icon={() =>{ return(<Ionicons name = {"md-information-circle-outline"} size={25} color={"black"}/> )}}
-                    onPress = {() => null}
+                    onPress = {() => navigation.navigate("Hakkında")}
                 />
             </ScrollView>
         </View>

@@ -17,7 +17,6 @@ export default StyleSheet.create({
         color:"black"
     },
     forward_icon:{
-        borderBottomWidth:0.5,
         borderColor:"#C0C0C0",
         justifyContent:"center",
         width:60,
@@ -27,7 +26,6 @@ export default StyleSheet.create({
         marginLeft:10
     },
     switch_container:{
-        borderBottomWidth:0.5,
         justifyContent:"center",
         borderColor:"#C0C0C0",
         alignItems:"center",
@@ -36,7 +34,6 @@ export default StyleSheet.create({
     card_title_container:{
         flex:1,
         justifyContent:"center",
-        borderBottomWidth:0.5,
         borderColor:"#C0C0C0"
     }
 

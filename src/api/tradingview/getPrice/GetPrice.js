@@ -1,7 +1,7 @@
 import Client from "./../../../api/tradingview/client";
 import priceNotification from './priceNotification';
 
-export default function getPrice(symbol) {
+export default async function getPrice(symbol) {
 
     var responseList = []
     const fetchData = async() => {
@@ -32,8 +32,8 @@ export default function getPrice(symbol) {
                     responseList = responseList.concat(responseData)
                     if(responseList.length == symbol.length) {
                         priceNotification(responseList)
-                        client.end()
                     }
+                    client.end()
                     chart.delete();
                     });
                 }
