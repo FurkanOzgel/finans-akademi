@@ -4,9 +4,8 @@ import styles from './SearchBar.style';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import useSearch from "./../../api/tradingview/useSearch";
 import SearchChart from '../SearchChart';
-import LottieView from 'lottie-react-native';
 
-export default function SearchBar({onPress}) {
+export default function SearchBar({onPress,state}) {
     
     const [onFocus, setOnFocus] = useState(false)
     const [text, setText] = useState("")
@@ -30,14 +29,7 @@ export default function SearchBar({onPress}) {
                     onChangeText= {(input) => setText(input)}
                     ref={textInput}
                     />
-                {loading == true?
-                        <LottieView
-                        source={require('./../../assets/loading.json')}
-                        style= {styles.loading}
-                        loop= {true}
-                        autoPlay={true}
-                        />:null}
-                {!text=="" && onFocus == true && loading == false?
+                {!text=="" && onFocus == true ?
                         <TouchableOpacity onPress={handleClose}>
                             <Ionicons style={styles.cancelIcon} name={"close"} size={20} />
                         </TouchableOpacity>
@@ -45,8 +37,11 @@ export default function SearchBar({onPress}) {
                 }
                 </View>
                 <FlatList 
+                    style={{bottom:0}}
                     data={searchList.filter(item => item.type != "futures")} 
-                    renderItem={({item}) =>{ return <SearchChart item = {item} pressFunc = {onPress}/> }}
+                    renderItem={({item}) =>{ return <SearchChart item = {item} pressFunc = {onPress} state={state}/> }}
+                    showsVerticalScrollIndicator={false}
+                    keyboardShouldPersistTaps='handled'
                     />
         </View>
     )

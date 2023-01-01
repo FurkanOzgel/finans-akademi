@@ -63,7 +63,7 @@ export default function WatchListChart({item}) {
             : 
             <View style={styles.container}>        
                 <View style={styles.view}>
-                    <Text style={styles.name}>{description}</Text>
+                    <Text style={[styles.name, {flex:1}]}>{description}</Text>
                     <Text style={styles.name}>{price}</Text>
                 </View>
                 <View style={styles.view}>
@@ -72,7 +72,8 @@ export default function WatchListChart({item}) {
                         <Text style={styles.exchange}>{listedExchange} | </Text>
                         <Text style={styles.name}>{symbol}</Text>
                     </View>
-                    <Text style={styles.name}>{percentage}%</Text>
+                    <Text style={percentage > -1 ? {fontWeight:"bold", color:"green"}:{fontWeight:"bold",
+                            color:"red"}}>{percentage}%</Text>
                 </View>
             </View>}
         </View>

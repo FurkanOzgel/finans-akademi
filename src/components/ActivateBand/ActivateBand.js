@@ -1,14 +1,37 @@
-import React, {useState} from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Text, View, Switch } from "react-native";
 import styles from "./ActivateBand.style"; 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import setupPlayer from "./setupPlayer"
+import TrackPlayer from "react-native-track-player";
 
 export default function ActivateBand() {
 
-    const [isEnabled, SetIsEnabled] = useState(false)
+    const [isEnabled, setIsEnabled] = useState(false);
+    const isFirstRun = useRef(true);
+
     const toggleSwitch = () => {
-        SetIsEnabled(previousState => !previousState)
+        if(!isEnabled==true){
+            setupPlayer()
+        }else{
+            TrackPlayer.reset()
+        }
+        setIsEnabled(previousState => !previousState)
     };
+
+    useEffect(() => {
+        if (isFirstRun.current) {
+            try{
+                TrackPlayer.getState().then((playerState) => {
+                    console.log(playerState)
+                    setIsEnabled(playerState == "playing" ? true: false)
+                })
+            }catch{
+                setIsEnabled(false)
+                }
+            isFirstRun.current = false
+            }
+    })
     
     return(
         <View style={styles.container}>
@@ -16,7 +39,7 @@ export default function ActivateBand() {
                 <MaterialCommunityIcons name = {"watch-import-variant"} size={25} color={"black"}/>
             </View>
             <View style={styles.card_title_container}>
-                <Text style={styles.card_title}>Akıllı Saat Senkronizasyonu</Text>
+                <Text style={styles.card_title}>Akıllı Bileklik Senkronizasyonu</Text>
             </View>
                 <View style={styles.switch_container}>
                 <Switch

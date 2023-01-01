@@ -1,5 +1,5 @@
 import { Text, TouchableOpacity, View, } from "react-native";
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import ActivateBand from "./../../components/ActivateBand";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import styles from "./BandSettings.style";
@@ -11,6 +11,7 @@ import WatchList from "../../components/WatchList/WatchList";
 
 export default function BandSettings() {
     const [addMode, SetAddMode] = useState(false)
+
 
     async function addItemWatchList(name) {
         try{
@@ -39,11 +40,15 @@ export default function BandSettings() {
                 <View style={styles.card_title_container}>
                     <Text style={styles.card_title}>İzleme Listesi</Text>
                 </View>
-                <TouchableOpacity style={styles.add_icon} onPress={() => SetAddMode(!addMode)}>
-                    <Ionicons name={addMode ? "arrow-up-sharp" : "add"} size={25} color={"black"}/>
+                <TouchableOpacity style={styles.add_icon} onPress={() => {
+                    SetAddMode(!addMode);
+                    }}>
+                    <Ionicons name={addMode ? "remove" : "add"} size={25} color={"black"}/>
                 </TouchableOpacity>
             </View>
-            { addMode ? <SearchBar onPress={addItemWatchList}/>:<WatchList/> }
-        </View>
+            <View>
+                { addMode ? <SearchBar onPress={addItemWatchList}/>: <WatchList />}
+            </View>
+        </View>        
 );
 }

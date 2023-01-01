@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity} from "react-native";
 import styles from "./SearchChart.style";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-export default function SearchChart({item, pressFunc}) {
+export default function SearchChart({item, pressFunc }) {
     
     return(
         <View style={styles.container}>
@@ -18,7 +18,9 @@ export default function SearchChart({item, pressFunc}) {
                     <Text style={styles.name}>{item.symbol}</Text>
                 </View>
             </View>
-            <TouchableOpacity onPress={() => pressFunc(item.exchange+":"+item.symbol)}>
+            <TouchableOpacity onPress={() => {
+                pressFunc(item.exchange+":"+item.symbol)
+                }}>
                 <Ionicons name={"add"} size={25} color={"black"}/>
             </TouchableOpacity>
         </View>

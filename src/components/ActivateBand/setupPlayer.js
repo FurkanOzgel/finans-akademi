@@ -6,8 +6,7 @@ export default async function setupPlayer() {
         {
             id:1,
             url: require("./../../assets/blank.mp3"),
-            title: "Blank",
-            artist: 'Furkan',
+            title: "Veri Al"
         }
     ]
 

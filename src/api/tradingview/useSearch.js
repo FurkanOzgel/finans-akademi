@@ -25,14 +25,20 @@ export default function getPrice(searchStr, state = null) {
         setLoading(true)
         if(!(searchStr=="")){
             const delayDebounceFn = setTimeout(() => {
-                fetchData()
-            }, 800)
+                
+            }, 100)
 
-            return () => clearTimeout(delayDebounceFn)
+            return () => fetchData()
         }else{
             setLoading(false)
             setData([])
+            const delayDebounceFn = setTimeout(() => {
+                setData([])
+            }, 50)
+            return () => clearTimeout(delayDebounceFn)
+            
         }
+        
         
     },[state]);
 

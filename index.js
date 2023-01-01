@@ -6,7 +6,7 @@ import {AppRegistry} from 'react-native';
 import Router from './src/Router';
 import {name as appName} from './app.json';
 import TrackPlayer, {Event}  from 'react-native-track-player';
-import setupPlayer from './src/components/BandSwtich/setupPlayer';
+import setupPlayer from './src/components/ActivateBand/setupPlayer';
 import notifee from "@notifee/react-native"
 
 TrackPlayer.addEventListener(Event.RemoteDuck, async (data) => {
@@ -48,4 +48,4 @@ notifee.onForegroundEvent(async ({ type, detail }) => {
 
 
 AppRegistry.registerComponent(appName, () => Router);
-TrackPlayer.registerPlaybackService(() => require('./src/components/BandSwtich/service'));
+TrackPlayer.registerPlaybackService(() => require('./src/components/ActivateBand/service'));

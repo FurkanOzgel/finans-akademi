@@ -1,6 +1,6 @@
 import TrackPlayer from 'react-native-track-player';
 import { Event } from 'react-native-track-player';
-import getPrice from './../../api/tradingview/getPrice';
+import getPrice from '../../api/tradingview/getPrice';
 import BackgroundTimer from 'react-native-background-timer';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
