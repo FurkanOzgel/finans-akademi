@@ -52,7 +52,7 @@ export default function WatchListChart({item}) {
     return(
         <View>
             {loading ? 
-            <View style={{alignItems:"center", justifyContent:"center"}} >
+            <View style={{alignItems:"center", justifyContent:"center", backgroundColor:"white"}} >
                 <LottieView
                 source={require('./../../assets/loading.json')}
                 style= {{height:50, width:50 }}

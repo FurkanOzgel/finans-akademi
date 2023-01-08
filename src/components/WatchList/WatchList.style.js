@@ -20,14 +20,14 @@ export default StyleSheet.create({
     justifyContent: 'center',
     position: 'absolute',
     top: 0,
-    width: Dimensions.get("window").width/5,
+    width: Dimensions.get("window").width,
     backgroundColor: "red",
     right: 0,
   },
   rightSwipe:{
     backgroundColor:"red",
-    width:70,
-    alignItems:"center",
+    width: Dimensions.get("window").width,
+    alignItems:"flex-end",
     justifyContent:"center"
   }
 });
