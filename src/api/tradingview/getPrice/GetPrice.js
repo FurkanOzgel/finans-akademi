@@ -9,9 +9,9 @@ export default async function getPrice(symbol) {
             for(i=0; i < symbol.length; i++) {
                 const client = new Client();
                 const chart = new client.Session.Chart();
-                const name = symbol[i]
+                const name = symbol[i][1].split(":")[1]
 
-                chart.setMarket(symbol[i]);
+                chart.setMarket(name);
                 chart.setSeries("1D")
 
                 chart.onUpdate( () => {

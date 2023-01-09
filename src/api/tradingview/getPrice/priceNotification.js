@@ -6,7 +6,7 @@ export default async function priceNotification(data) {
 
 
     for(i = 0; i < data.length; i++) {
-        body = body + `${data[i].symbol.split(':')[1]}:<br>${data[i].price}<br>${Math.round(data[i].percentage*100)/100}%<br><br>`
+        body = body + `${data[i].symbol}:<br>${data[i].price}<br>${Math.round(data[i].percentage*100)/100}%<br><br>`
         }
     const channelId = await notifee.createChannel({
         id: "Price Notification",

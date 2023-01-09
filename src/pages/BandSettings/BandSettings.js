@@ -21,7 +21,7 @@ export default function BandSettings() {
                 var oldList = JSON.parse(await AsyncStorage.getItem("list_array"))
             }
             if (!oldList.includes(name)) {
-                oldList.push(name)
+                oldList.push([Math.floor((Math.random() * 9999)), name])
                 AsyncStorage.setItem("list_array",JSON.stringify(oldList))
                 SetAddMode(false)
             }

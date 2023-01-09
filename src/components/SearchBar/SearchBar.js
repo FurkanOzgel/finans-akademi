@@ -4,6 +4,7 @@ import styles from './SearchBar.style';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import useSearch from "./../../api/tradingview/useSearch";
 import SearchChart from '../SearchChart';
+import LottieView from "lottie-react-native"
 
 export default function SearchBar({onPress,state}) {
     
@@ -29,11 +30,19 @@ export default function SearchBar({onPress,state}) {
                     onChangeText= {(input) => setText(input)}
                     ref={textInput}
                     />
-                {!text=="" && onFocus == true ?
+                {!loading && onFocus == true ?
                         <TouchableOpacity onPress={handleClose}>
                             <Ionicons style={styles.cancelIcon} name={"close"} size={20} />
                         </TouchableOpacity>
-                        :null
+                        :
+                        <View style={{alignItems:"center", justifyContent:"center"}} >
+                            <LottieView
+                            source={require('./../../assets/loading.json')}
+                            style= {{height:50, width:50 }}
+                            loop= {true}
+                            autoPlay={true}
+                            />
+                        </View>
                 }
                 </View>
                 <FlatList 
