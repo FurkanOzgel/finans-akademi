@@ -8,40 +8,35 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export function ItemBox({setList, id, together, list, symbol, description,  price, percentage, listedExchange, type, loading}) {
 
-
-    const rightSwipe = (progess, dragX) => {
-
-        const scale = dragX.interpolate({
-            inputRange: [1, 200],
-            outputRange: [1, 0],
-            extrapolateRight: "clamp",
+    const scale = dragX.interpolate({
+        inputRange: [1, 200],
+        outputRange: [1, 0],
+        extrapolateRight: "clamp",
+    })
+    const handleDelete = async (deleted) => {
+        var data = list
+        data = data.filter(function(item) {
+            return item !== deleted
         })
-
-        const handleDelete = async (deleted) => {
-            var data = list
-            data = data.filter(function(item) {
-                return item !== deleted
-            })
-            AsyncStorage.setItem("list_array",JSON.stringify(data))
-            setList(data)
-            }
-
-        return(
-            <View style={styles.rightSwipe}>
-                <TouchableOpacity onPress={() => handleDelete(together)}  style={{top:0,botom:0, right:0, left:0}} activeOpacity={0.6}>
-                    <Animated.Text style={{transform:[{scale:scale}]}}>
-                        <Ionicons name={"trash-outline"} size={30} color={"white"}/>
-                    </Animated.Text>
-                </TouchableOpacity>
-            </View>
-        )
-    }
+        AsyncStorage.setItem("list_array",JSON.stringify(data))
+        setList(data)
+        }
+    return(
+        <View style={styles.rightSwipe}>
+            <TouchableOpacity onPress={() => handleDelete(together)}  style={{top:0,botom:0, right:0, left:0}} activeOpacity={0.6}>
+                <Animated.Text style={{transform:[{scale:scale}]}}>
+                    <Ionicons name={"trash-outline"} size={30} color={"white"}/>
+                </Animated.Text>
+            </TouchableOpacity>
+        </View>
+    )
+    
     return(
         <Swipeable renderRightActions={rightSwipe} key={id}>
             <WatchListChart data={{symbol:symbol ,description:description ,price: price , percentage: percentage , listedExchange: listedExchange, type: type, loading: loading}} />
         </Swipeable>
     )
-} 
+}
 
 export default function WatchList() {
 
@@ -92,9 +87,12 @@ export default function WatchList() {
 
     
     useEffect(() => {
-        AsyncStorage.getItem("list_array").then((item) => setList(JSON.parse(item)));
-    },[])
-    
+        list.forEach((_, i) => {
+            rowAnimatedValues[`${i}`] = new Animated.Value(1);
+          });
+    },[list])
+
+
     return (
         <FlatList
             data={list}

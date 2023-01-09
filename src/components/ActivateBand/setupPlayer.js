@@ -6,7 +6,8 @@ export default async function setupPlayer() {
         {
             id:1,
             url: require("./../../assets/blank.mp3"),
-            title: "Veri Al"
+            title: "Veri Al",
+            author: "Finans Akademi"
         }
     ]
 
