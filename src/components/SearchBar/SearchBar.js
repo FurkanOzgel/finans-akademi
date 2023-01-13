@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { TextInput, View, TouchableOpacity, FlatList } from 'react-native';
 import styles from './SearchBar.style';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -12,6 +12,7 @@ export default function SearchBar({onPress,state}) {
     const [text, setText] = useState("")
     const textInput = useRef() 
     var {data: searchList, loading: loading} = useSearch(text,text)
+
     const handleClose = () => {
         searchList = []
         setText("")
@@ -29,20 +30,23 @@ export default function SearchBar({onPress,state}) {
                     onBlur = {() => setOnFocus(false)}
                     onChangeText= {(input) => setText(input)}
                     ref={textInput}
+                    autoFocus={true}
                     />
-                {!loading && onFocus == true ?
+                {!loading && onFocus == true && text ?
                         <TouchableOpacity onPress={handleClose}>
                             <Ionicons style={styles.cancelIcon} name={"close"} size={20} />
                         </TouchableOpacity>
                         :
                         <View style={{alignItems:"center", justifyContent:"center"}} >
+                            {loading?
                             <LottieView
                             source={require('./../../assets/loading.json')}
                             style= {{height:50, width:50 }}
                             loop= {true}
                             autoPlay={true}
-                            />
-                        </View>
+                            />:null
+                        }
+                            </View>
                 }
                 </View>
                 <FlatList 

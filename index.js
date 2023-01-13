@@ -20,7 +20,7 @@ TrackPlayer.addEventListener(Event.RemoteDuck, async (data) => {
             vibration: false,
           });
         await notifee.displayNotification({
-            body:  "Finans Akademi devre dışı. Tekrar çalışması için bu bildirimi silin.",
+            body:  "Fiyat bildirimi sistem devre dışı. Tekrar çalışması için bu bildirimi silin.",
             android: {
               channelId,
               smallIcon: 'notification',

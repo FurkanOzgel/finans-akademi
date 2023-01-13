@@ -4,7 +4,7 @@ import axios from 'axios';
 export default function getPrice(searchStr, state = null) {
 
     const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [error, SetError] = useState(null);
 
     const url = "https://symbol-search.tradingview.com/symbol_search/?text="
@@ -32,7 +32,6 @@ export default function getPrice(searchStr, state = null) {
             setLoading(false)
             setData([])
         }
-        
         
     },[state]);
 

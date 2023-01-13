@@ -24,7 +24,8 @@ export default StyleSheet.create({
     },
     loading: {
         height:60,
-        width:60
-
+        width:60,
+        alignItems:"center",
+        justifyContent:"center"
     }
 });

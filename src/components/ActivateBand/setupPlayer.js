@@ -6,8 +6,8 @@ export default async function setupPlayer() {
         {
             id:1,
             url: require("./../../assets/blank.mp3"),
-            title: "Veri Al",
-            author: "Finans Akademi"
+            title: "Fiyat Al",
+            artist: "Finans Akademi"
         }
     ]
 
@@ -33,7 +33,4 @@ export default async function setupPlayer() {
     })
     await TrackPlayer.setRepeatMode(RepeatMode.Track)
     await TrackPlayer.play()
-    await TrackPlayer.pause()
-    await TrackPlayer.play()
-
 }

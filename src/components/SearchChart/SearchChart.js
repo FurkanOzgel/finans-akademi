@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity} from "react-native";
 import styles from "./SearchChart.style";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-export default function SearchChart({item, pressFunc }) {
+export default function SearchChart({item, pressFunc}) {
     
     return(
         <View style={styles.container}>

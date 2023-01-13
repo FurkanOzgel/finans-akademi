@@ -12,19 +12,34 @@ import WatchList from "../../components/WatchList/WatchList";
 export default function BandSettings() {
     const [addMode, SetAddMode] = useState(false)
 
+    
+
 
     async function addItemWatchList(name) {
+
+        
+
         try{
+            
             if (await AsyncStorage.getItem("list_array") == null){
                 var oldList = [];
             }else{
                 var oldList = JSON.parse(await AsyncStorage.getItem("list_array"))
             }
-            if (!oldList.includes(name)) {
+
+            var sameValue = false
+            oldList.filter( item => {
+                if(item[1] == name){
+                    sameValue = true
+                }
+            console.log(sameValue)
+            })
+            
+            if(!sameValue) {
                 oldList.push([Math.floor((Math.random() * 9999)), name])
                 AsyncStorage.setItem("list_array",JSON.stringify(oldList))
-                SetAddMode(false)
             }
+            SetAddMode(false)
         }catch{
             null
         }
