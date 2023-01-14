@@ -11,11 +11,11 @@ import BandSettings from "./pages/BandSettings";
 import NotificationSettings from "./pages/NotificationSettings";
 import AboutPage from "./pages/AboutPage";
 import Languages from "./pages/Languages";
+import EducationPage from "./pages/EducationPage";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator()
-StatusBar.setBackgroundColor("white")
-StatusBar.setBarStyle('dark-content')
+
 
 const MyTheme = {
   ...DefaultTheme,
@@ -30,76 +30,66 @@ export default function Router() {
     React.useEffect(() => {
         SplashScreen.hide();
       }, []);
+    StatusBar.setBackgroundColor("white")
+    StatusBar.setBarStyle("dark-content")
     
     return(
         <NavigationContainer 
           theme={MyTheme}
           >
-            <Tab.Navigator 
-                initialRouteName="Blog"
-                screenOptions={({ route }) => ({
-                    headerShown: false,
-                    tabBarHideOnKeyboard:true,
-                    tabBarShowLabel:false,
-                    tabBarIcon: ({ focused, color, size }) => {
-                      let iconName;
-          
-                      if (route.name === 'Demo Screen') {
-                          iconName = focused ? 'invest' : 'invest-outline';
-                          return <CustomIcon name={iconName} size={size} color={color}/>;
-                      } else if (route.name === 'Blog') {
-                        iconName = focused ? 'book' : 'book-outline';
-                        return <Ionicons name={iconName} size={size} color={color} />;
-                      } else if (route.name === 'Settings Stack') {
-                        iconName = focused ? 'settings' : 'settings-outline';
-                        return <Ionicons name={iconName} size={size} color={color} />;
-                      }
-                    },
-                    tabBarActiveTintColor: '#000080',
-                    tabBarInactiveTintColor: 'gray',
-                  })}
-            >
-                <Tab.Screen name="Demo Screen" component={DemoScreen}/>
-                <Tab.Screen name="Blog" component={BlogScreen}/>
-                <Tab.Screen name="Settings Stack" component={SettingsStack}/>
+              <Tab.Navigator 
+                  initialRouteName="Edu"
+                  screenOptions={({ route }) => ({
+                      headerShown: false,
+                      tabBarHideOnKeyboard:true,
+                      tabBarShowLabel:false,
+                      tabBarIcon: ({ focused, color, size }) => {
+                        let iconName;
 
+                        if (route.name === 'Demo Screen') {
+                            iconName = focused ? 'invest' : 'invest-outline';
+                            return <CustomIcon name={iconName} size={size} color={color}/>;
+                        } else if (route.name === 'Edu') {
+                            iconName = focused ? 'book' : 'book-outline';
+                            return <Ionicons name={iconName} size={size} color={color} />;
+                        } else if (route.name === 'Settings Stack') {
+                            iconName = focused ? 'settings' : 'settings-outline';
+                            return <Ionicons name={iconName} size={size} color={color} />;
+                        }
+                      },
+                      tabBarActiveTintColor: '#585BFF',
+                      tabBarInactiveTintColor: 'gray',
+                    })}>
+                <Tab.Screen name="Demo Screen" component={DemoScreen}/>
+                <Tab.Screen name="Edu" component={EducationPage}/>
+                <Tab.Screen name="Settings Stack" component={SettingsStack}/>
             </Tab.Navigator>
         </NavigationContainer>
     )
 }
 
 function SettingsStack() {
-  return (
-    <Stack.Navigator screenOptions={() => ({
-      headerShadowVisible:false,
-      animation:"slide_from_right"  
-      })}>
-      <Stack.Screen name="Settings" component={SettingsPage} options={{"headerShown":false}}/>
-      <Stack.Screen name="Akıllı Bileklik Ayarları" component={BandSettings}/>
-      <Stack.Screen name="Günlük Hatırlatıcı" component={NotificationSettings}/>
-      <Stack.Screen name="Dil" component={Languages}/>
-      <Stack.Screen name="Hakkında" component={AboutPage}/>
-    </Stack.Navigator>
-  );
+    return (
+        <Stack.Navigator screenOptions={() => ({
+            headerShadowVisible:false,
+            animation:"slide_from_right"
+            })}>
+              <Stack.Screen name="Settings" component={SettingsPage} options={{"headerShown":false}}/>
+              <Stack.Screen name="Akıllı Bileklik Ayarları" component={BandSettings}/>
+              <Stack.Screen name="Günlük Hatırlatıcı" component={NotificationSettings}/>
+              <Stack.Screen name="Dil" component={Languages}/>
+              <Stack.Screen name="Hakkında" component={AboutPage}/>
+        </Stack.Navigator>
+    );
 }
 
 function DemoScreen() {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Demo Yatırım</Text>
-      </View>
+        <View>
+            <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                <Text>Demo Yatırım</Text>
+            </View>
+        </View>
     );
   }
 
-function BlogScreen() {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text> Blog Screen</Text>
-      </View>
-    );
-  }
-  
-
-
-
-    

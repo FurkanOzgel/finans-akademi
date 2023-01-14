@@ -4,6 +4,8 @@ export default StyleSheet.create({
         flex:1,
         padding:15,
         backgroundColor:"white",
+        borderBottomWidth:1,
+        borderBottomColor: "gray"
     },
     view:{
         flexDirection:"row",

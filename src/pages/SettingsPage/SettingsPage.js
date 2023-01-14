@@ -1,10 +1,12 @@
 import React from "react";
 import SettingsCard from "../../components/SettingsCard";
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView, StatusBar } from "react-native";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import styles from "./SettingsPage.style";
 
 export default function SettingsScreen({navigation}) {
+
+
     return (
         <View>
             <View>
