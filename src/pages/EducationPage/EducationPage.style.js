@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions } from "react-native";
+import { BorderlessButton } from "react-native-gesture-handler";
 
 export default StyleSheet.create({
     greeting:{
@@ -6,30 +7,23 @@ export default StyleSheet.create({
         fontSize:40,
         fontWeight:"bold",
         textAlignVertical:"bottom",
-        marginLeft:20,
-        marginTop:-20
+        margin:20,
+        marginTop:-20,
     },
     cardTitle:{
         color:"black",
-        fontSize:16,
-        fontWeight:"bold",
+        fontSize: 17,
+        margin:20
     },
     cardContainer:{
-        fontSize: 20,
         margin: 5,
         alignItems:"center",
         justifyContent:"space-between",
-        borderRadius:10,
-        height:70,
-        paddingLeft:20,
-        borderWidth:0,
-        borderColor:"#585BFF",
-        backgroundColor:"#0000",
+        borderRadius:15,
+        height: Dimensions.get('window').height / 10,
+        backgroundColor:'white',
         flexDirection:"row",
-        elevation:3,
-        shadowOffset: {width: -2, height: 4},
-        shadowOpacity: 0.2,
-        shadowRadius: 3,
+        elevation:5
     },
     topImg:{
         marginTop:-60,
@@ -40,7 +34,6 @@ export default StyleSheet.create({
     },
     topContainer:{
         backgroundColor:"#585BFF",
-        height:370,
         borderBottomLeftRadius:30,
         borderBottomRightRadius:30,
         marginBottom:10

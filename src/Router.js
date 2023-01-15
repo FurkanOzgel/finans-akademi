@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Text, StatusBar } from "react-native";
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -12,9 +12,10 @@ import NotificationSettings from "./pages/NotificationSettings";
 import AboutPage from "./pages/AboutPage";
 import Languages from "./pages/Languages";
 import EducationPage from "./pages/EducationPage";
+import HtmlContentPage from "./pages/HtmlContentPage";
 
 const Tab = createBottomTabNavigator();
-const Stack = createNativeStackNavigator()
+const Stack = createNativeStackNavigator();
 
 
 const MyTheme = {
@@ -35,13 +36,11 @@ export default function Router() {
     
     return(
         <NavigationContainer 
-          theme={MyTheme}
-          >
+          theme={MyTheme}>
               <Tab.Navigator 
                   initialRouteName="Edu"
                   screenOptions={({ route }) => ({
                       headerShown: false,
-                      tabBarHideOnKeyboard:true,
                       tabBarShowLabel:false,
                       tabBarIcon: ({ focused, color, size }) => {
                         let iconName;
@@ -61,7 +60,7 @@ export default function Router() {
                       tabBarInactiveTintColor: 'gray',
                     })}>
                 <Tab.Screen name="Demo Screen" component={DemoScreen}/>
-                <Tab.Screen name="Edu" component={EducationPage}/>
+                <Tab.Screen name="Edu" component={EduStack}/>
                 <Tab.Screen name="Settings Stack" component={SettingsStack}/>
             </Tab.Navigator>
         </NavigationContainer>
@@ -69,6 +68,7 @@ export default function Router() {
 }
 
 function SettingsStack() {
+
     return (
         <Stack.Navigator screenOptions={() => ({
             headerShadowVisible:false,
@@ -83,7 +83,23 @@ function SettingsStack() {
     );
 }
 
+
+function EduStack() {
+
+    return (
+        <Stack.Navigator screenOptions={() => ({
+            headerShadowVisible:false,
+            animation:"slide_from_right",
+            headerTitleStyle:{fontSize:17}
+            })}>
+              <Stack.Screen name="Education" component={EducationPage} options={{"headerShown":false}}/>
+              <Stack.Screen name="HtmlPage" component={HtmlContentPage}/>
+        </Stack.Navigator>
+    );
+}
+
 function DemoScreen() {
+
     return (
         <View>
             <View style={{ justifyContent: 'center', alignItems: 'center' }}>

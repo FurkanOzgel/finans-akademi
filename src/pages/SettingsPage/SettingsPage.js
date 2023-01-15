@@ -5,8 +5,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import styles from "./SettingsPage.style";
 
 export default function SettingsScreen({navigation}) {
-
-
+    
     return (
         <View>
             <View>

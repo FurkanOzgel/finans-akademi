@@ -3,9 +3,7 @@ export default StyleSheet.create({
     container:{
         flex:1,
         padding:15,
-        backgroundColor:"white",
-        borderBottomWidth:1,
-        borderBottomColor: "gray"
+        backgroundColor:"white"
     },
     view:{
         flexDirection:"row",
