@@ -15,6 +15,12 @@ export default StyleSheet.create({
         fontSize: 17,
         margin:20
     },
+    complatedCardTitle:{
+        color:"white",
+        fontSize: 17,
+        margin:20,
+        fontWeight:"bold"
+    },
     cardContainer:{
         margin: 5,
         alignItems:"center",
@@ -23,7 +29,20 @@ export default StyleSheet.create({
         height: Dimensions.get('window').height / 10,
         backgroundColor:'white',
         flexDirection:"row",
-        elevation:5
+        elevation:5,
+        borderWidth:0.5,
+        borderColor:"#fefefe"
+    },
+    complatedCard:{
+        margin: 5,
+        alignItems:"center",
+        justifyContent:"space-between",
+        borderRadius:15,
+        height: Dimensions.get('window').height / 10,
+        backgroundColor:"#25D366",
+        flexDirection:"row",
+        elevation:5,
+        borderColor:"#fefefe"
     },
     topImg:{
         marginTop:-60,
